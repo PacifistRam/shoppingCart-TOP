@@ -1,26 +1,28 @@
-import useFakeStore from "./customHook/useFakeStore"
+import { createBrowserRouter,RouterProvider } from "react-router-dom"
+import Navbar from "./components/Navbar"
+import Shop from "./pages/Shop"
+import Checkout from "./pages/Checkout"
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element:<Shop />,
+  },
+  {
+    path: "/checkout",
+    element:<Checkout />,
+  },
+])
 
 function App() {
   
-    const {storeData, error,loading} = useFakeStore();
-
-    if(loading) {
-      return <p>Loading...</p>
-    }
-    if(error) {
-      return <p>Error :{error.message}</p>
-    }
-
+   
 
   return (
     <>
-      <ul>
-        {
-          storeData.map((product) => (
-            <li key={product.id}>{product.title}</li>
-          ))
-        }
-      </ul>
+      <Navbar />
+      <RouterProvider router = {router} />
     </>
   )
 }
