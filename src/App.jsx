@@ -1,30 +1,27 @@
-import { createBrowserRouter,RouterProvider } from "react-router-dom"
-import Navbar from "./components/Navbar"
-import Shop from "./pages/Shop"
-import Checkout from "./pages/Checkout"
+import { Outlet} from "react-router-dom"
+import Navbar from './components/Navbar.jsx'
+import { useState } from "react"
 
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element:<Shop />,
-  },
-  {
-    path: "/checkout",
-    element:<Checkout />,
-  },
-])
+
 
 function App() {
   
-   
-
+   const[shoppingCart,setShoppingCart]  =useState([])
+   const [isOpen,setIsOpen] = useState(false);
+  
   return (
-    <>
-      <Navbar />
-      <RouterProvider router = {router} />
-    </>
-  )
+    <div className="main-wrapper">
+      <Navbar
+        shoppingCart={shoppingCart}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
+      <main>
+        <Outlet context={[shoppingCart, setShoppingCart,isOpen,setIsOpen]} />
+      </main>
+    </div>
+  );
 }
 
 export default App
