@@ -1,5 +1,7 @@
 import { Button } from "./Button";
 
+import { usDollar } from "../utils/utils"; 
+
 const ProductCard = ({product,shoppingCart,setShoppingCart}) => {
 
   const handleShoppingCArt = (id, title, imageUrl, price) => {
@@ -37,10 +39,21 @@ const ProductCard = ({product,shoppingCart,setShoppingCart}) => {
         alt={`image of ${product.title}`}
       />
       <h2 className="product-card__title">{product.title}</h2>
-      <span className="product-card__price">{product.price}</span>
+      <span className="product-card__price">{usDollar(product.price)}</span>
       <div className="card-btn-wrapper">
-        <Button  action = "add cart" onClickHandle = {() => {handleShoppingCArt(product.id,product.title,product.image,product.price)}} >
-        Add To Cart
+        <Button
+          classes={["add-cart"]}
+          as="button"
+          onClickHandle={() => {
+            handleShoppingCArt(
+              product.id,
+              product.title,
+              product.image,
+              product.price
+            );
+          }}
+        >
+          Add To Cart
         </Button>
       </div>
     </div>

@@ -14,7 +14,7 @@ const MiniCart = ({ shoppingCart, setShoppingCart, isOpen, setIsOpen }) => {
       {isOpen && <div className={`overlay show `} onClick={toggleOpen}></div>}
 
       <div className={`mini-cart-wrapper ${isOpen ? 'open' : '' }`}>
-      <Button onClickHandle={toggleOpen}><MdClose  /></Button>
+      <Button onClickHandle={toggleOpen} classes ={["toggle-cart"]}><MdClose  /></Button>
         <div className="mini-cart">
           <h1>Shopping Cart</h1>
           {shoppingCart.length > 0 ? (
@@ -32,8 +32,8 @@ const MiniCart = ({ shoppingCart, setShoppingCart, isOpen, setIsOpen }) => {
               </ul>
             </div>
           ) : (
-            <div className="miniCart-empty">
-              <p>Your cart Appears to be Empty!</p>
+            <div className="mini-cart-empty">
+              <h2>Your cart Appears to be Empty!</h2>
               <p>Add Some products in your cart</p>
             </div>
           )}
