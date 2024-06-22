@@ -11,7 +11,7 @@ import { useOutletContext } from "react-router-dom";
 const Shop = () => {
   const { storeData, error, loading } = useFakeStore();
 
-  const [shoppingCart, setShoppingCart,isOpen, setIsOpen] = useOutletContext();
+  const [shoppingCart, setShoppingCart] = useOutletContext();
 
   if (loading) {
     return <p>Loading...</p>;
@@ -33,12 +33,7 @@ const Shop = () => {
           </li>
         ))}
       </ul>
-      <MiniCart
-        shoppingCart={shoppingCart}
-        setShoppingCart={setShoppingCart}
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-      />
+      
     </div>
   );
 };

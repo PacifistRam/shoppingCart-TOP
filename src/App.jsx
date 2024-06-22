@@ -2,7 +2,7 @@ import { Outlet} from "react-router-dom"
 import Navbar from './components/Navbar.jsx'
 import { useState } from "react"
 
-
+import MiniCart from "./components/MiniCart.jsx"
 
 
 function App() {
@@ -18,7 +18,13 @@ function App() {
         setIsOpen={setIsOpen}
       />
       <main>
-        <Outlet context={[shoppingCart, setShoppingCart,isOpen,setIsOpen]} />
+        <Outlet context={[shoppingCart, setShoppingCart,]} />
+        <MiniCart
+        shoppingCart={shoppingCart}
+        setShoppingCart={setShoppingCart}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
       </main>
     </div>
   );
